@@ -19,6 +19,7 @@ class MainApplication : Application(), ReactApplication {
         this,
         object : DefaultReactNativeHost(this) {
           override fun getPackages(): List<ReactPackage> {
+            // Packages that cannot be autolinked yet can be added manually here, for example:
             val packages = PackageList(this).packages.toMutableList()
             packages.add(MyECPayPackage()) // Add this line
             return packages
@@ -40,6 +41,7 @@ class MainApplication : Application(), ReactApplication {
     super.onCreate()
     SoLoader.init(this, false)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
     ApplicationLifecycleDispatcher.onApplicationCreate(this)

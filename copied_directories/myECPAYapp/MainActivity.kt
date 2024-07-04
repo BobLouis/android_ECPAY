@@ -7,7 +7,7 @@ import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 import expo.modules.ReactActivityDelegateWrapper
-import com.anonymous.myECPAYapp.ECPayModule // Import your ECPayModule
+import com.myecpayapp.ECPayModule // Import your ECPayModule
 
 class MainActivity : ReactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,8 +18,7 @@ class MainActivity : ReactActivity() {
         super.onCreate(null)
 
         // Initialize ECPay SDK
-        val reactContext = applicationContext as ReactApplicationContext
-        val ecpayModule = ECPayModule(reactContext)
+        val ecpayModule = ECPayModule(this)
         ecpayModule.initializeSDK()
     }
 

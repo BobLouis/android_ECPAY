@@ -8,10 +8,6 @@ import com.facebook.react.bridge.Callback
 import tw.com.ecpay.paymentgatewaykit.manager.PaymentkitManager
 import tw.com.ecpay.paymentgatewaykit.manager.ServerType
 
-enum class LanguageCode {
-    ZH_TW, EN_US
-}
-
 class ECPayModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
     private var activity: Activity? = null
@@ -34,13 +30,13 @@ class ECPayModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaM
     @ReactMethod
     fun createPayment(token: String, language: String, useResultPage: Int, appStoreName: String, callback: Callback) {
         activity?.let {
-            val languageCode = if (language == "zh-TW") LanguageCode.ZH_TW else LanguageCode.EN_US
+            // 假設你已經設置了 PaymentkitManager 並正確初始化
             PaymentkitManager.createPayment(
                 it,
+                null, // Replace with a Fragment if you have one
                 token,
-                "",
-                languageCode,
-                useResultPage == 1,
+                language,
+                useResultPage,
                 appStoreName,
                 PaymentkitManager.RequestCode_CreatePayment
             )
